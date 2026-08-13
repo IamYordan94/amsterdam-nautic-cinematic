@@ -157,7 +157,9 @@ function makeLabel(text) {
   return sp;
 }
 
-/* ---------- Build the world ---------- */
+/* ---------- Build the world (single tile, endlessly wrapped) ---------- */
+const TOTAL = 150;
+const wrapables = [];
 const boats = [];
 const boatHulls = [];
 
@@ -167,18 +169,20 @@ PROVIDERS.forEach((p, i) => {
   boat.position.set(side, 0, -7 - i * 6);
   boats.push(boat);
   boatHulls.push(boat.userData.hull);
+  wrapables.push(boat);
   scene.add(boat);
 });
 
-// Canal houses on both banks
+// Canal houses on both banks (single 150-unit tile)
 for (let bank = -1; bank <= 1; bank += 2) {
   const x = bank * 5.2;
-  let z = 4;
-  while (z > -180) {
+  let z = 8;
+  while (z > -142) {
     const w = 1.4 + Math.random() * 1.1;
     const h = 2.4 + Math.random() * 2.6;
     const house = makeHouse(w, h);
     house.position.set(x + (Math.random() - 0.5) * 1.2, 0, z);
+    wrapables.push(house);
     scene.add(house);
     z -= w + 0.4 + Math.random() * 0.5;
   }
@@ -253,8 +257,16 @@ function animate() {
   const dt = Math.min(clock.getDelta(), 0.05);
 
   // glide forward (slower while hovering a boat)
-  const glide = hovered ? 0.02 : 0.055;
+  const glide = hovered ? 0.015 : 0.04;
   camZ -= glide;
+
+  // endless canal: wrap anything that fell behind
+  for (const o of wrapables) {
+    while (o.position.z > camZ + 40) o.position.z -= TOTAL;
+  }
+
+  // keep the water under the camera
+  water.position.z = camZ - 95;
 
   // steer with mouse
   const targetX = mouseX * 4.5;
