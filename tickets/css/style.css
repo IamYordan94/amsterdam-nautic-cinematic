@@ -1,0 +1,138 @@
+/* ============================================================
+   VAART — Amsterdam boottickets · 4D canal scene
+   Warm, hand-crafted palette (deliberately NOT dark-navy/gold).
+   ============================================================ */
+
+:root {
+  --ink: #2a2018;
+  --ink-soft: #5b4a38;
+  --cream: #f7ead8;
+  --cream-deep: #efe0c6;
+  --paper: #fff8ec;
+  --coral: #c6533a;
+  --coral-deep: #a93f2b;
+  --teal: #6aa79c;
+  --line: rgba(42, 32, 24, 0.16);
+  --display: "Bricolage Grotesque", sans-serif;
+  --mono: "Space Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--display);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+#scene { position: fixed; inset: 0; z-index: 0; }
+#scene canvas { display: block; }
+
+/* ============ TOP HUD ============ */
+.hud {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 26px;
+  pointer-events: none;
+}
+.hud__brand { display: flex; flex-direction: column; line-height: 1; }
+.hud__logo {
+  font-family: var(--display); font-weight: 800; font-size: 26px;
+  letter-spacing: 0.02em; color: var(--ink);
+}
+.hud__sub {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-soft); margin-top: 4px;
+}
+.hud__list {
+  pointer-events: auto; cursor: pointer;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 10px 18px; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 18px rgba(42,32,24,0.10);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.hud__list:hover { transform: translateY(-1px); background: #fff; }
+.hud__list #count {
+  font-family: var(--display); font-weight: 700; font-size: 12px;
+  background: var(--coral); color: #fff; border-radius: 999px;
+  min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 5px;
+}
+
+/* ============ BOTTOM HINT ============ */
+.hint {
+  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--ink-soft); background: rgba(255,248,236,0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px;
+  white-space: nowrap;
+  transition: opacity 0.4s ease;
+}
+.hint__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); animation: pulse 1.8s ease infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ============ CARD ============ */
+.card {
+  position: fixed; right: 24px; top: 50%; transform: translateY(-50%) translateX(120%);
+  z-index: 20; width: min(360px, calc(100vw - 48px));
+  background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+  padding: 30px 28px; box-shadow: 0 24px 60px rgba(42,32,24,0.22);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card.open { transform: translateY(-50%) translateX(0); }
+.card__close {
+  position: absolute; top: 14px; right: 18px;
+  background: none; border: none; cursor: pointer;
+  font-size: 26px; line-height: 1; color: var(--ink-soft);
+}
+.card__cat {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--coral);
+}
+.card__name { font-size: 30px; font-weight: 800; line-height: 1.05; margin-top: 10px; }
+.card__tag { margin-top: 14px; font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
+.card__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; gap: 12px; }
+.card__price { font-family: var(--mono); font-size: 14px; color: var(--ink); }
+.card__book {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--coral); color: #fff; text-decoration: none;
+  padding: 12px 20px; border-radius: 999px; transition: background 0.2s ease, transform 0.2s ease;
+}
+.card__book:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+/* ============ PANEL ============ */
+.panel {
+  position: fixed; inset: 0; z-index: 30;
+  background: var(--cream); overflow-y: auto;
+  transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 64px 26px 80px;
+}
+.panel.open { transform: translateY(0); }
+.panel__close {
+  position: absolute; top: 20px; right: 24px;
+  background: none; border: none; cursor: pointer; font-size: 30px; color: var(--ink);
+}
+.panel__title { font-size: clamp(28px, 6vw, 44px); font-weight: 800; margin-bottom: 26px; }
+.panel__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.panel-item {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px; cursor: pointer; transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.panel-item:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(42,32,24,0.12); }
+.panel-item__cat { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); }
+.panel-item__name { font-weight: 700; font-size: 18px; margin-top: 6px; }
+.panel-item__price { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-top: 8px; }
+
+@media (max-width: 640px) {
+  .hint { display: none; }
+  .card { right: 50%; top: auto; bottom: 20px; transform: translateX(50%) translateY(120%); }
+  .card.open { transform: translateX(50%) translateY(0); }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>VAART — Amsterdam boottickets</title>
+  <meta name="description" content="Alle Amsterdamse rondvaarten, open boten, zelfvaar en diner cruises op één plek." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+
+  <!-- 3D scene mounts here -->
+  <div id="scene"></div>
+
+  <!-- Top HUD -->
+  <header class="hud">
+    <div class="hud__brand">
+      <span class="hud__logo">VAART</span>
+      <span class="hud__sub">Amsterdam · boottickets</span>
+    </div>
+    <button class="hud__list" id="listBtn">Alle aanbieders <span id="count">25</span></button>
+  </header>
+
+  <!-- Bottom hint -->
+  <div class="hint" id="hint">
+    <span class="hint__dot"></span>
+    Beweeg je muis om te sturen · klik op een boot
+  </div>
+
+  <!-- Provider detail card -->
+  <aside class="card" id="card" aria-hidden="true">
+    <button class="card__close" id="cardClose" aria-label="Sluiten">×</button>
+    <span class="card__cat" id="cardCat"></span>
+    <h2 class="card__name" id="cardName"></h2>
+    <p class="card__tag" id="cardTag"></p>
+    <div class="card__foot">
+      <span class="card__price" id="cardPrice"></span>
+      <a class="card__book" id="cardBook" href="#" target="_blank" rel="noopener">Boek ticket →</a>
+    </div>
+  </aside>
+
+  <!-- Full provider list panel -->
+  <nav class="panel" id="panel" aria-hidden="true">
+    <button class="panel__close" id="panelClose" aria-label="Sluiten">×</button>
+    <h2 class="panel__title">Alle aanbieders</h2>
+    <div class="panel__list" id="panelList"></div>
+  </nav>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
