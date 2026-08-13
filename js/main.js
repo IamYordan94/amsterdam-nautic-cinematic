@@ -1,6 +1,7 @@
 /* ============================================================
    AMSTERDAM NAUTIC — main.js
-   Locomotive Scroll + GSAP ScrollTrigger + SplitType + reveals
+   Locomotive Scroll (parallax) + GSAP + SplitType + reveals
+   Reveals use IntersectionObserver — robust with smooth scroll.
    ============================================================ */
 
 (function () {
@@ -19,82 +20,71 @@
     });
   }
 
-  function animateLoader() {
-    gsap.to(loaderFill, {
-      width: '100%',
-      duration: 1.4,
-      ease: 'power2.inOut',
-      onComplete: hideLoader
-    });
-  }
-
-  /* ---------- Locomotive Scroll ---------- */
+  /* ---------- Locomotive Scroll (parallax layers) ---------- */
   const locoScroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     multiplier: 0.85,
-    lerp: 0.08,
-    getDirection: true
+    lerp: 0.08
   });
-
-  /* ---------- GSAP + ScrollTrigger wiring ---------- */
-  gsap.registerPlugin(ScrollTrigger);
-
-  locoScroll.on('scroll', ScrollTrigger.update);
-
-  ScrollTrigger.scrollerProxy('[data-scroll-container]', {
-    scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-        : locoScroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-    },
-    pinType: document.querySelector('[data-scroll-container]').style.transform ? 'transform' : 'fixed'
-  });
-
-  ScrollTrigger.defaults({ scroller: '[data-scroll-container]' });
 
   /* ---------- SplitType character reveal ---------- */
   document.querySelectorAll('[data-split]').forEach((el) => {
     const st = new SplitType(el, { types: 'lines,words,chars' });
-    gsap.fromTo(
-      st.chars,
-      { opacity: 0, y: 46, rotateX: -30 },
-      {
-        opacity: 1, y: 0, rotateX: 0,
-        duration: 0.9, stagger: 0.018, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 88%' }
-      }
+    gsap.set(st.chars, { opacity: 0, y: 46, rotateX: -30 });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(st.chars, {
+              opacity: 1, y: 0, rotateX: 0,
+              duration: 0.9, stagger: 0.018, ease: 'power3.out'
+            });
+            io.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.25 }
     );
+    io.observe(el);
   });
 
   /* ---------- Image reveals ---------- */
   document.querySelectorAll('[data-reveal-image]').forEach((el) => {
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 88%',
-      once: true,
-      onEnter: () => el.classList.add('revealed')
-    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add('revealed');
+            io.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
   });
 
   /* ---------- Counters ---------- */
   document.querySelectorAll('[data-count]').forEach((el) => {
     const target = parseInt(el.getAttribute('data-count'), 10);
     const obj = { v: 0 };
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 90%',
-      once: true,
-      onEnter: () => {
-        gsap.to(obj, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          onUpdate: () => (el.textContent = Math.round(obj.v))
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(obj, {
+              v: target, duration: 1.6, ease: 'power2.out',
+              onUpdate: () => (el.textContent = Math.round(obj.v))
+            });
+            io.unobserve(el);
+          }
         });
-      }
-    });
+      },
+      { threshold: 0.5 }
+    );
+    io.observe(el);
   });
 
   /* ---------- Fleet card hover tilt ---------- */
@@ -110,16 +100,17 @@
     });
   });
 
-  /* ---------- Refresh on load ---------- */
+  /* ---------- Init on load ---------- */
   window.addEventListener('load', () => {
-    ScrollTrigger.refresh();
-    animateLoader();
-  });
-
-  /* ---------- Refresh after all resources settle ---------- */
-  let refreshTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(refreshTimer);
-    refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+    // Recalculate Locomotive heights once images have settled
+    requestAnimationFrame(() => {
+      if (locoScroll && typeof locoScroll.update === 'function') locoScroll.update();
+    });
+    gsap.to(loaderFill, {
+      width: '100%',
+      duration: 1.4,
+      ease: 'power2.inOut',
+      onComplete: hideLoader
+    });
   });
 })();
