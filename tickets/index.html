@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VAART — Amsterdam boottickets</title>
-  <meta name="description" content="Alle Amsterdamse rondvaarten, open boten, zelfvaar en diner cruises op één plek." />
+  <meta name="description" content="Alle Amsterdamse rondvaarten, open boten, zelfvaar en diner cruises op één plek — de vloot op het water." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,16 @@
 </head>
 <body>
 
-  <!-- Top HUD -->
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <svg class="loader__glyph" viewBox="0 0 120 44" fill="none" aria-hidden="true">
+      <path class="loader__wave" d="M6 28 C 18 8, 30 8, 42 24 C 54 40, 66 40, 78 24 C 90 8, 102 8, 114 28" />
+    </svg>
+    <span class="loader__word">VAART</span>
+    <span class="loader__sub">Amsterdam · boottickets</span>
+  </div>
+
+  <!-- HUD -->
   <header class="hud">
     <div class="hud__brand">
       <span class="hud__logo">VAART</span>
@@ -23,29 +32,38 @@
     <button class="hud__list" id="listBtn">Alle aanbieders <span id="count">25</span></button>
   </header>
 
-  <!-- Scroll-scrubbed hero -->
+  <!-- Hero: scroll-scrubbed canal glide -->
   <section class="scrub" id="scrub">
     <div class="scrub__pin">
-      <video id="heroVideo" class="scrub__video" src="video/canal-hero.mp4" muted playsinline preload="auto"></video>
+      <div class="scrub__canvas" id="heroScrub">
+        <video id="heroFallback" class="scrub__video" src="video/canal-hero.mp4" muted playsinline loop preload="none" hidden></video>
+      </div>
       <div class="scrub__shade"></div>
       <div class="scrub__content">
         <p class="scrub__eyebrow">Amsterdam · boottickets</p>
         <h1 class="scrub__title">Vaar mee.</h1>
-        <p class="scrub__sub">Scroll om door de grachten te varen — alle 25 aanbieders op één plek.</p>
-        <div class="scrub__tags" id="tags"></div>
+        <p class="scrub__sub">Scroll om door de grachten te varen. Vijf vloten liggen op je te wachten.</p>
       </div>
       <div class="scrub__hint" id="hint"><span class="scrub__hint-dot"></span> Scroll om te varen</div>
     </div>
   </section>
 
-  <!-- Providers -->
-  <section class="providers" id="providers">
-    <div class="providers__head">
-      <p class="providers__eyebrow">Alle aanbieders</p>
-      <h2 class="providers__title">Kies je boot.</h2>
+  <!-- Harbor: 25 providers as 3D boats -->
+  <section class="harbor" id="harborSection">
+    <div class="harbor__canvas" id="harbor"></div>
+    <div class="harbor__ui">
+      <p class="harbor__eyebrow">De vloot</p>
+      <h2 class="harbor__title">Kies je boot.</h2>
+      <p class="harbor__sub">Beweeg je muis over de haven · klik een boot · alle 25 aanbieders op het water</p>
     </div>
-    <div class="providers__grid" id="grid"></div>
+    <div class="harbor__filters" id="filters" role="tablist"></div>
   </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__brand">VAART</div>
+    <p class="footer__text">Alle tickets van Amsterdamse rondvaarten op één plek.<br />Een samenwerking met <a href="https://amsterdamnautic.nl" target="_blank" rel="noopener">Amsterdam Nautic</a>.</p>
+  </footer>
 
   <!-- Provider detail card -->
   <aside class="card" id="card" aria-hidden="true">
@@ -68,6 +86,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="js/main.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
