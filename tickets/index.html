@@ -32,16 +32,25 @@
     <button class="hud__list" id="listBtn">Alle aanbieders <span id="count">25</span></button>
   </header>
 
-  <!-- Hero: static generated canal artwork -->
+  <!-- Hero: crossfading generated canal scenes, scroll-driven -->
   <section class="hero" id="hero">
-    <img class="hero__bg" id="heroBg" src="images/hero-canal.webp" alt="Geschilderde Amsterdamse gracht in het avondlicht" fetchpriority="high" />
-    <div class="hero__shade"></div>
-    <div class="hero__content">
-      <p class="hero__eyebrow">Amsterdam · boottickets</p>
-      <h1 class="hero__title">Vaar mee.</h1>
-      <p class="hero__sub">Alle rondvaarten, open boten, zelfvaar en diner cruises op één plek. De vloot ligt op je te wachten.</p>
+    <div class="hero__pin">
+      <img class="hero__bg" id="heroBg" src="images/hero-canal.webp" alt="Geschilderde Amsterdamse gracht in het avondlicht" fetchpriority="high" />
+      <div class="hero__stage" id="heroStage" aria-hidden="true">
+        <div class="scene" style="background-image:url('images/scenes/scene-1.webp')"></div>
+        <div class="scene" style="background-image:url('images/scenes/scene-2.webp')"></div>
+        <div class="scene" style="background-image:url('images/scenes/scene-3.webp')"></div>
+        <div class="scene" style="background-image:url('images/scenes/scene-4.webp')"></div>
+        <div class="scene" style="background-image:url('images/scenes/scene-5.webp')"></div>
+      </div>
+      <div class="hero__shade"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Amsterdam · boottickets</p>
+        <h1 class="hero__title">Vaar mee.</h1>
+        <p class="hero__sub">Alle rondvaarten, open boten, zelfvaar en diner cruises op één plek. De vloot ligt op je te wachten.</p>
+      </div>
+      <div class="hero__hint" id="hint"><span class="hero__hint-dot"></span> Scroll door de dag</div>
     </div>
-    <div class="hero__hint" id="hint"><span class="hero__hint-dot"></span> Scroll naar de vloot</div>
   </section>
 
   <!-- Harbor: 25 providers as 3D boats -->
@@ -64,6 +73,7 @@
   <!-- Provider detail card -->
   <aside class="card" id="card" aria-hidden="true">
     <button class="card__close" id="cardClose" aria-label="Sluiten">×</button>
+    <img class="card__img" id="cardImg" src="" alt="" hidden />
     <span class="card__cat" id="cardCat"></span>
     <h2 class="card__name" id="cardName"></h2>
     <p class="card__tag" id="cardTag"></p>

@@ -77,12 +77,20 @@ button { font-family: inherit; }
   display: inline-flex; align-items: center; justify-content: center; padding: 0 5px;
 }
 
-/* ============ HERO (static artwork) ============ */
-.hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; }
+/* ============ HERO (crossfading scenes, scroll-driven) ============ */
+.hero { position: relative; height: 320vh; }
+.hero__pin { position: sticky; top: 0; height: 100vh; min-height: 560px; overflow: hidden; }
 .hero__bg {
   position: absolute; inset: -3%; width: 106%; height: 106%;
   object-fit: cover; will-change: transform;
 }
+.hero__stage { position: absolute; inset: 0; }
+.scene {
+  position: absolute; inset: 0; opacity: 0; will-change: opacity, transform;
+  background-size: cover; background-position: center;
+}
+/* scene 1 visible before any scroll — JS fades it out as scene 2 arrives */
+.scene:first-child { opacity: 1; }
 .hero__shade {
   position: absolute; inset: 0; pointer-events: none;
   background:
@@ -165,6 +173,7 @@ button { font-family: inherit; }
 }
 .card.open { transform: translateY(-50%) translateX(0); }
 .card__close { position: absolute; top: 12px; right: 18px; background: none; border: none; cursor: pointer; font-size: 26px; color: var(--ink-soft); }
+.card__img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin-bottom: 18px; display: block; background: var(--cream-deep); }
 .card__cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); }
 .card__name { font-size: 30px; font-weight: 800; line-height: 1.05; margin-top: 10px; }
 .card__tag { margin-top: 14px; font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
@@ -193,6 +202,7 @@ button { font-family: inherit; }
 }
 .panel-item:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(42, 32, 24, 0.12); }
 .panel-item__cat { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); }
+.panel-item__thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; margin-bottom: 12px; display: block; background: var(--cream-deep); }
 .panel-item__name { font-weight: 700; font-size: 18px; margin-top: 6px; }
 .panel-item__price { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-top: 8px; }
 

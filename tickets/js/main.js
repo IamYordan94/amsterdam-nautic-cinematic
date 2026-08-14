@@ -11,7 +11,7 @@ const $ = (id) => document.getElementById(id);
 gsap.registerPlugin(ScrollTrigger);
 
 /* ---------- Provider card ---------- */
-const cardEl = $('card'), cardCat = $('cardCat'), cardName = $('cardName');
+const cardEl = $('card'), cardCat = $('cardCat'), cardName = $('cardName'), cardImg = $('cardImg');
 const cardTag = $('cardTag'), cardPrice = $('cardPrice'), cardBook = $('cardBook'), cardClose = $('cardClose');
 
 function openCard(p) {
@@ -20,6 +20,13 @@ function openCard(p) {
   cardName.textContent = p.name;
   cardTag.textContent = p.tag;
   cardPrice.textContent = p.price;
+  if (p.slug) {
+    cardImg.src = `images/artwork/${p.slug}.webp`;
+    cardImg.alt = `Geschilderd tafereel van ${p.name}`;
+    cardImg.hidden = false;
+  } else {
+    cardImg.hidden = true;
+  }
   cardBook.href = '#'; // TODO: real reseller/affiliate link
   cardEl.classList.add('open');
   cardEl.setAttribute('aria-hidden', 'false');
@@ -38,7 +45,7 @@ panelClose.addEventListener('click', closePanel);
 PROVIDERS.forEach((p) => {
   const item = document.createElement('div');
   item.className = 'panel-item';
-  item.innerHTML = `<div class="panel-item__cat">${p.cat}</div><div class="panel-item__name">${p.name}</div><div class="panel-item__price">${p.price}</div>`;
+  item.innerHTML = `<img class="panel-item__thumb" src="images/artwork/${p.slug}.webp" alt="" loading="lazy" /><div class="panel-item__cat">${p.cat}</div><div class="panel-item__name">${p.name}</div><div class="panel-item__price">${p.price}</div>`;
   item.querySelector('.panel-item__cat').style.color = (GROUPS[p.group] || {}).color;
   item.addEventListener('click', () => { closePanel(); openCard(p); });
   panelList.appendChild(item);
@@ -75,14 +82,32 @@ GROUP_ORDER.forEach((key) => {
   $('filters').appendChild(btn);
 });
 
-/* ---------- Mouse parallax on the static hero ---------- */
+/* ---------- Hero crossfade scrollytelling (5 generated scenes) ---------- */
+const scenes = gsap.utils.toArray('.scene');
+if (scenes.length) {
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom bottom', scrub: 0.6 }
+  });
+  tl.set(scenes[0], { opacity: 1, scale: 1 }, 0);
+  scenes.forEach((s, i) => {
+    if (i === 0) return;
+    tl.fromTo(s, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1, duration: 1.6, ease: 'none' }, i * 1.4);
+    tl.to(scenes[i - 1], { opacity: 0, duration: 1.6, ease: 'none' }, i * 1.4 + 1.0);
+  });
+}
+
+/* ---------- Mouse parallax on the hero ---------- */
 if (window.matchMedia && matchMedia('(pointer: fine)').matches) {
   let mx = 0, my = 0;
   window.addEventListener('pointermove', (e) => {
     mx = (e.clientX / window.innerWidth) * 2 - 1;
     my = (e.clientY / window.innerHeight) * 2 - 1;
+    gsap.to('#heroStage', {
+      x: mx * 18, y: my * 12,
+      duration: 1.4, ease: 'power2.out', overwrite: 'auto'
+    });
     gsap.to('#heroBg', {
-      x: mx * 16, y: my * 10, scale: 1.05,
+      x: mx * 10, y: my * 6, scale: 1.04,
       duration: 1.4, ease: 'power2.out', overwrite: 'auto'
     });
   });
