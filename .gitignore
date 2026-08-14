@@ -1,3 +1,5 @@
 # TikTok reference clips — local research only, not part of the public site
 tickets/reference-videos/
 tickets/js/.debug/
+
+tickets/_gen-test/

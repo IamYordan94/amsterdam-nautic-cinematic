@@ -95,13 +95,15 @@ ScrollTrigger.create({
 });
 
 /* ---------- Boot ---------- */
-async function boot() {
-  const wait = 1100;
-  await new Promise((r) => setTimeout(r, wait));
-  gsap.to('#loader', {
-    opacity: 0, duration: 0.6,
-    onComplete: () => { const l = $('loader'); l && l.remove(); }
-  });
+function boot() {
+  // deterministic, gsap-independent loader removal
+  setTimeout(() => {
+    const l = $('loader');
+    if (!l) return;
+    l.style.transition = 'opacity 0.6s ease';
+    l.style.opacity = '0';
+    setTimeout(() => l.remove(), 700);
+  }, 900);
   ScrollTrigger.refresh();
 }
 boot();
