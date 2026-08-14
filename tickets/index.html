@@ -32,20 +32,16 @@
     <button class="hud__list" id="listBtn">Alle aanbieders <span id="count">25</span></button>
   </header>
 
-  <!-- Hero: scroll-scrubbed canal glide -->
-  <section class="scrub" id="scrub">
-    <div class="scrub__pin">
-      <div class="scrub__canvas" id="heroScrub">
-        <video id="heroFallback" class="scrub__video" src="video/canal-hero.mp4" muted playsinline loop preload="none" hidden></video>
-      </div>
-      <div class="scrub__shade"></div>
-      <div class="scrub__content">
-        <p class="scrub__eyebrow">Amsterdam · boottickets</p>
-        <h1 class="scrub__title">Vaar mee.</h1>
-        <p class="scrub__sub">Scroll om door de grachten te varen. Vijf vloten liggen op je te wachten.</p>
-      </div>
-      <div class="scrub__hint" id="hint"><span class="scrub__hint-dot"></span> Scroll om te varen</div>
+  <!-- Hero: static generated canal artwork -->
+  <section class="hero" id="hero">
+    <img class="hero__bg" id="heroBg" src="images/hero-canal.webp" alt="Geschilderde Amsterdamse gracht in het avondlicht" fetchpriority="high" />
+    <div class="hero__shade"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Amsterdam · boottickets</p>
+      <h1 class="hero__title">Vaar mee.</h1>
+      <p class="hero__sub">Alle rondvaarten, open boten, zelfvaar en diner cruises op één plek. De vloot ligt op je te wachten.</p>
     </div>
+    <div class="hero__hint" id="hint"><span class="hero__hint-dot"></span> Scroll naar de vloot</div>
   </section>
 
   <!-- Harbor: 25 providers as 3D boats -->
@@ -62,7 +58,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__brand">VAART</div>
-    <p class="footer__text">Alle tickets van Amsterdamse rondvaarten op één plek.<br />Een samenwerking met <a href="https://amsterdamnautic.nl" target="_blank" rel="noopener">Amsterdam Nautic</a>.</p>
+    <p class="footer__text">Alle Amsterdamse rondvaarten op één plek.<br />Van klassieke glazen-dak boten tot diner cruises en zelf varen.</p>
   </footer>
 
   <!-- Provider detail card -->

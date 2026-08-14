@@ -1,10 +1,10 @@
 /* ============================================================
-   VAART — The Harbor · main.js (integration)
-   Wires: loader · scrub hero · 3D harbor · card · panel · filters
+   VAART — The Harbor · main.js
+   Wires: loader · static art hero · 3D harbor · card · panel · filters
+   (scroll-scrub video engine removed — hero is generated artwork)
    ============================================================ */
 
 import { PROVIDERS, GROUPS, GROUP_ORDER } from './providers.js';
-import { createScrub } from './scrub.js';
 import { createHarbor } from './harbor.js';
 
 const $ = (id) => document.getElementById(id);
@@ -75,73 +75,28 @@ GROUP_ORDER.forEach((key) => {
   $('filters').appendChild(btn);
 });
 
-/* ---------- Frame-count probing (robust to subagent's exact count) ---------- */
-async function probeFrame(basePath, i, ext) {
-  try {
-    const r = await fetch(`${basePath}/frame-${String(i).padStart(4, '0')}.${ext}`, { method: 'HEAD', cache: 'no-store' });
-    return r.ok;
-  } catch { return false; }
-}
-async function detectFrames(basePath) {
-  const ext = (await probeFrame(basePath, 1, 'webp')) ? 'webp'
-            : (await probeFrame(basePath, 1, 'jpg')) ? 'jpg' : null;
-  if (!ext) return { count: 0, ext: 'webp' };
-  let lo = 1, hi = 300;
-  while (lo < hi) {
-    const mid = Math.ceil((lo + hi) / 2);
-    if (await probeFrame(basePath, mid, ext)) lo = mid; else hi = mid - 1;
-  }
-  return { count: lo, ext };
-}
-
-/* ---------- Scroll-scrubbed hero ---------- */
-async function initScrub() {
-  const { count } = await detectFrames('video/frames');
-  let scrub = null;
-
-  if (count > 0) {
-    scrub = createScrub({ container: $('heroScrub'), count, basePath: 'video/frames' });
-    await scrub.ready;
-  } else {
-    // fallback: plain video loop
-    const fb = $('heroFallback');
-    fb.hidden = false;
-    fb.play().catch(() => {});
-  }
-
-  ScrollTrigger.create({
-    trigger: '#scrub',
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: '.scrub__pin',
-    scrub: 0.6,
-    onUpdate: (self) => { if (scrub) scrub.setProgress(self.progress); }
-  });
-  ScrollTrigger.create({
-    trigger: '#scrub', start: '4% top',
-    onEnter: () => gsap.to('#hint', { opacity: 0, duration: 0.4 })
-  });
-  return scrub;
-}
-
-/* ---------- Mouse parallax on the hero ---------- */
+/* ---------- Mouse parallax on the static hero ---------- */
 if (window.matchMedia && matchMedia('(pointer: fine)').matches) {
   let mx = 0, my = 0;
   window.addEventListener('pointermove', (e) => {
     mx = (e.clientX / window.innerWidth) * 2 - 1;
     my = (e.clientY / window.innerHeight) * 2 - 1;
-    gsap.to('#heroScrub', {
-      x: mx * 14, y: my * 9, scale: 1.04,
+    gsap.to('#heroBg', {
+      x: mx * 16, y: my * 10, scale: 1.05,
       duration: 1.4, ease: 'power2.out', overwrite: 'auto'
     });
   });
 }
 
+/* ---------- Hero hint fades once you scroll ---------- */
+ScrollTrigger.create({
+  trigger: '#hero', start: '8% top',
+  onEnter: () => gsap.to('#hint', { opacity: 0, duration: 0.4 })
+});
+
 /* ---------- Boot ---------- */
 async function boot() {
-  const t0 = performance.now();
-  await initScrub();
-  const wait = Math.max(0, 1500 - (performance.now() - t0));
+  const wait = 1100;
   await new Promise((r) => setTimeout(r, wait));
   gsap.to('#loader', {
     opacity: 0, duration: 0.6,

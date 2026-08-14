@@ -77,41 +77,41 @@ button { font-family: inherit; }
   display: inline-flex; align-items: center; justify-content: center; padding: 0 5px;
 }
 
-/* ============ SCRUB HERO ============ */
-.scrub { position: relative; height: 420vh; }
-.scrub__pin { position: relative; height: 100vh; overflow: hidden; }
-.scrub__canvas { position: absolute; inset: 0; }
-.scrub__canvas canvas { display: block; }
-.scrub__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.scrub__shade {
+/* ============ HERO (static artwork) ============ */
+.hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; }
+.hero__bg {
+  position: absolute; inset: -3%; width: 106%; height: 106%;
+  object-fit: cover; will-change: transform;
+}
+.hero__shade {
   position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to bottom, rgba(42, 26, 12, 0.42) 0%, rgba(42, 26, 12, 0.06) 32%, rgba(42, 26, 12, 0.06) 62%, rgba(42, 26, 12, 0.5) 100%);
+    linear-gradient(to bottom, rgba(42, 26, 12, 0.42) 0%, rgba(42, 26, 12, 0.06) 32%, rgba(42, 26, 12, 0.06) 62%, rgba(42, 26, 12, 0.55) 100%);
 }
-.scrub__content {
+.hero__content {
   position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%);
   z-index: 5; padding: 0 7vw; max-width: 680px;
 }
-.scrub__eyebrow {
+.hero__eyebrow {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em;
   text-transform: uppercase; color: #ffe1b8; margin-bottom: 16px;
   text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
-.scrub__title {
+.hero__title {
   font-weight: 800; font-size: clamp(56px, 12vw, 140px); line-height: 0.95;
   color: #fff8ec; letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(0,0,0,0.35);
 }
-.scrub__sub {
+.hero__sub {
   margin-top: 20px; font-size: 17px; color: rgba(255, 248, 236, 0.92);
-  max-width: 420px; line-height: 1.5; text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  max-width: 460px; line-height: 1.5; text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
-.scrub__hint {
+.hero__hint {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
   z-index: 6; display: flex; align-items: center; gap: 10px;
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
   color: #fff8ec; text-shadow: 0 1px 6px rgba(0,0,0,0.45);
 }
-.scrub__hint-dot { width: 8px; height: 8px; border-radius: 50%; background: #ffd9a8; animation: pulse 1.8s ease infinite; }
+.hero__hint-dot { width: 8px; height: 8px; border-radius: 50%; background: #ffd9a8; animation: pulse 1.8s ease infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.3; transform: translateY(4px); } }
 
 /* ============ HARBOR ============ */

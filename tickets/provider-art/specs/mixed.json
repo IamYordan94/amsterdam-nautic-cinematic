@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Boaty Amsterdam",
+    "group": "zelf",
+    "website": "https://www.boaty.nl",
+    "boat_reality": "Cheerful small electric sloops you steer yourself through the canals without a licence, rented per hour from central docks.",
+    "brand_colors": ["#2EA3F2", "#FF6600"],
+    "brand_vibe": "Playful, low-barrier self-drive brand with a bright blue-and-orange identity aimed at first-time captains.",
+    "scene": "A small electric Boaty sloop with bright blue trim and an orange flag putters under a low arched bridge on the Prinsengracht at golden hour, a small group of friends at the tiller, brick gables leaning over the water.",
+    "art_tag": "cheerful blue sloop poster",
+    "prompt": "Painterly vintage travel-poster illustration, a small cheerful electric sloop with bright blue trim and an orange pennant puttering under a low arched brick bridge on the Prinsengracht at golden hour, friends steering from a tiller at the stern, gabled canal houses leaning over dark water, ripples catching the low sun, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Sloepdelen",
+    "group": "zelf",
+    "website": "https://sloepdelen.nl",
+    "boat_reality": "Shared electric sloops for up to twelve people, rented by the hour from about \u20ac45, no boating licence required.",
+    "brand_colors": ["#00A2D1", "#F2E8D5"],
+    "brand_vibe": "Friendly sharing-economy sloop rental with a crisp cyan identity and an easy social boating pitch.",
+    "scene": "A roomy cyan-trimmed electric sloop waits at a low wooden dock on the Elandsgracht at golden hour, friends stepping aboard with picnic baskets, the gentle curve of the canal leading the eye toward distant gables.",
+    "art_tag": "cyan sloop dock poster",
+    "prompt": "Painterly vintage travel-poster illustration, a roomy electric sloop with cyan trim moored at a low wooden dock on the Elandsgracht at golden hour, friends stepping aboard with wicker picnic baskets, the canal curving gently toward distant stepped gables, sunlight pooling on the water between the boats, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Adam's Boats",
+    "group": "zelf",
+    "website": "https://adamsboats.com",
+    "boat_reality": "Easy-going self-drive sloop rental from about \u20ac65 an hour, pitched at tourists who have never steered a boat before.",
+    "brand_colors": ["#F5C84C", "#F8F5E9"],
+    "brand_vibe": "Sunny, confidence-giving rental brand with warm gold accents and a simple no-experience-needed promise.",
+    "scene": "A gold-trimmed white sloop glides past the Westerkerk at golden hour, a relaxed first-time skipper at the tiller, the church tower and Prinsengracht houses glowing warm behind the boat's wake.",
+    "art_tag": "golden first-cruise poster",
+    "prompt": "Painterly vintage travel-poster illustration, a gold-trimmed white self-drive sloop gliding along the Prinsengracht at golden hour, a relaxed first-time skipper at the tiller, the Westerkerk tower and stepped brick houses glowing behind the boat's gentle wake, low sun flaring between the gables, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Canal Motorboats",
+    "group": "zelf",
+    "website": "https://www.canalmotorboats.com",
+    "boat_reality": "Amsterdam's oldest boat rental, running since the 1920s, with a fleet of classic open electric sloops steered from a tiller.",
+    "brand_colors": ["#00498E", "#D48200"],
+    "brand_vibe": "Heritage rental house with a navy-and-gold identity and nearly a century of putting people behind the tiller.",
+    "scene": "A navy-hulled open electric sloop with a gold stripe crosses the wide Amstel river at golden hour, the Skinny Bridge's white spans behind it, the old city skyline hazy across the water.",
+    "art_tag": "navy heritage sloop poster",
+    "prompt": "Painterly vintage travel-poster illustration, a navy-hulled open electric sloop with a gold stripe crossing the wide Amstel river at golden hour, the white double spans of the Magere Brug behind it, the old city skyline soft and hazy across the water, a long warm reflection following the boat, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Amsterdam Jewel Cruises",
+    "group": "diner",
+    "website": "https://www.amsterdamjewelcruises.com",
+    "boat_reality": "An antique 1915 salon boat serving \u00e0-la-carte dinner at private window tables, operating since the city's golden tourism era.",
+    "brand_colors": ["#C9A96E", "#4A2C1E"],
+    "brand_vibe": "Refined old-money dinner cruise with antique wood, candlelight and a gold identity, from about \u20ac90.",
+    "scene": "An antique 1915 teak salon boat glides through the evening canals, its tall windows glowing candle-gold, silhouettes of diners at linen-covered tables inside, the water mirroring the warm squares of light.",
+    "art_tag": "candlelit salon-boat poster",
+    "prompt": "Painterly vintage travel-poster illustration, an antique teak salon boat from 1915 gliding through the evening canals, tall windows glowing candle-gold from within, silhouettes of diners at linen tables and wine glasses catching the light, warm light spilling in long reflections across black water, bridge lamps and dark gables above, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Rederij 't Smidtje",
+    "group": "diner",
+    "website": "https://smidtje.nl",
+    "boat_reality": "A luxury private saloon boat offering a three-course dinner with an unlimited bar, crewed and intimate, from about \u20ac85.",
+    "brand_colors": ["#32373C", "#F2C879"],
+    "brand_vibe": "Understated premium dinner cruise with a charcoal identity, focused on private tables and full service rather than volume.",
+    "scene": "A charcoal-black saloon boat with brass trim idles under a lantern-lit bridge at dusk, a waiter pouring wine at a candle-lit table inside, the black hull and warm windows reflecting together in still water.",
+    "art_tag": "charcoal dinner-boat poster",
+    "prompt": "Painterly vintage travel-poster illustration, a charcoal-black luxury saloon boat with brass trim gliding under a lantern-lit stone bridge at dusk, a waiter pouring wine at a candle-lit table inside the glowing windows, the black hull and warm squares of light reflected together in still canal water, first stars over the gabled rooftops, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Candlelight Cruises",
+    "group": "diner",
+    "website": "",
+    "boat_reality": "A small operator running two-hour wine-and-cheese cruises by candlelight through the evening canals, from about \u20ac55. No live website found (domains unregistered or parked), so this spec is based on their tour description rather than brand material.",
+    "brand_colors": ["#7A4E2D", "#F2C879", "#2A2018"],
+    "brand_vibe": "Cozy, romantic no-frills evening cruise where candle flame and cheese boards do the branding.",
+    "scene": "A cosy salon boat full of flickering candles drifts along the Herengracht after dark, cheese boards and wine glasses on low tables, the candlelight doubling in the black water and warming the faces inside.",
+    "art_tag": "flickering candle cruise poster",
+    "prompt": "Painterly vintage travel-poster illustration, a cosy small salon boat full of flickering candles drifting along the Herengracht after dark, cheese boards and wine glasses on low wooden tables, candle flames doubled in the black mirror of the water, warm amber light washing over the interior, quiet gabled houses rising in the dusk behind, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Wetlands Safari",
+    "group": "natuur",
+    "website": "https://www.wetlandssafari.nl",
+    "boat_reality": "Guided Canadian-canoe nature tours through the Waterland wetlands just outside Amsterdam since 1995, paddling reed channels rather than city canals.",
+    "brand_colors": ["#109296", "#6B4A2F"],
+    "brand_vibe": "Calm, expert-led nature escapes with a teal identity and a two-decade pedigree in Amsterdam's quiet wetlands.",
+    "scene": "Two Canadian canoes slip through a misty reed channel in the Waterland wetlands at dawn, a heron lifting off ahead, low sun breaking through the mist and turning the reeds copper and gold.",
+    "art_tag": "misty wetland canoe poster",
+    "prompt": "Painterly vintage travel-poster illustration, two Canadian canoes slipping through a narrow misty reed channel in the Waterland wetlands at dawn, a grey heron lifting off ahead, low sun breaking through the mist and turning the reeds copper and gold, flat water reflecting the pale sky, farm roofs distant on the horizon, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  }
+]

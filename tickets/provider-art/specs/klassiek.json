@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Lovers Canal Cruises",
+    "group": "klassiek",
+    "website": "https://www.lovers.nl",
+    "boat_reality": "Bright red glass-roof saloon boats running one-hour classic cruises since 1956 from piers opposite Central Station; classic tickets from about \u20ac15.50.",
+    "brand_colors": ["#E05100", "#F32C00"],
+    "brand_vibe": "Friendly, high-volume mainstream operator with a bright, approachable red identity and heavy emphasis on combi deals and family tourism.",
+    "scene": "A bright red Lovers glass-roof saloon boat glides down the Prinsengracht at golden hour as the tapering Westerkerk tower and stepped brick canal houses glow behind it.",
+    "art_tag": "warm red lithograph poster",
+    "prompt": "Painterly vintage travel-poster illustration, a bright red glass-roof canal saloon boat with long windows gliding down the Prinsengracht at golden hour, the tapering Westerkerk tower and stepped brick canal houses rising behind, passengers silhouetted beneath the glass canopy, warm reflections shimmering across dark water, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Blue Boat Company",
+    "group": "klassiek",
+    "website": "https://www.blueboat.nl",
+    "boat_reality": "Deep-blue glass-roof sightseeing boats (75-minute City Canal Cruise) departing Stadhouderskade beside the Rijksmuseum, operated since 1948 with 18+ million guests carried; the only Amsterdam operator with wheelchair-accessible boats.",
+    "brand_colors": ["#001489", "#FF7550"],
+    "brand_vibe": "Established, reliable classic cruiser with a cool navy-and-coral identity and a prideful 'real Amsterdam' heritage since 1948.",
+    "scene": "A deep-blue Blue Boat glass-roof cruiser runs along the Stadhouderskade in front of the red-brick Rijksmuseum, whose twin towers catch the low golden light.",
+    "art_tag": "deep blue vintage lithograph",
+    "prompt": "Painterly vintage travel-poster illustration, a deep-blue glass-roof sightseeing boat cruising the Stadhouderskade in front of the red-brick Rijksmuseum at golden hour, the museum's twin towers and arched facade glowing warm, a row of lamp posts and trees along the quay, sunlight catching the glass canopy, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Stromma Canal Tours",
+    "group": "klassiek",
+    "website": "https://www.stromma.com/en-nl/amsterdam/",
+    "boat_reality": "Classic red glass-roof sightseeing boats running the '100 Highlights' canal cruise (\u20ac13.50+), plus the 115-year-old vintage saloon boat 'Amstel' under the Signature Boats label; the Swedish Stromma Group's Amsterdam arm, the former Canal Tours Amsterdam.",
+    "brand_colors": ["#DD052B", "#237D32"],
+    "brand_vibe": "Polished Scandinavian-led sightseeing brand with a heritage red identity and a premium boutique saloon line.",
+    "scene": "Stromma's 115-year-old vintage teak saloon boat 'Amstel', with brass fittings and curved glass, slips beneath the white drawbridge spans of the Magere Brug on the river Amstel at golden hour.",
+    "art_tag": "vintage saloon boat lithograph",
+    "prompt": "Painterly vintage travel-poster illustration, an elegant vintage teak saloon boat with brass fittings and curved glass windows gliding under the white double-drawbridge Magere Brug on the river Amstel at golden hour, warm light spilling through the bridge spans, tree-lined quays and gabled houses receding beyond, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Amsterdam Circle Line",
+    "group": "klassiek",
+    "website": "https://www.amsterdamcircleline.nl",
+    "boat_reality": "Electric glass-roof boats with an open rear deck running 75-minute cruises from Anne Frank House and Central Station (\u20ac17.99); Amsterdam Circle Line now operates as Smidtje Canal Cruises Amsterdam, so amsterdamcircleline.nl redirects to smidtjecanalcruises.nl.",
+    "brand_colors": ["#00AA6C", "#FCC543"],
+    "brand_vibe": "Modern, sustainability-led operator with a fresh teal-and-mustard identity, a 100% electric fleet and local 'Amsterdam DNA' skippers.",
+    "scene": "A teal-trimmed electric glass-roof boat with an open rear deck rounds the Golden Bend of the Herengracht, stately merchant houses mirrored in still golden water.",
+    "art_tag": "teal electric-boat poster",
+    "prompt": "Painterly vintage travel-poster illustration, a sleek electric glass-roof canal boat with an open rear deck and teal trim rounding the Golden Bend of the Herengracht at golden hour, stately merchant houses with ornate gables and tall windows lining the curving canal, still water mirroring the facades, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  },
+  {
+    "name": "Rederij P. Kooij",
+    "group": "klassiek",
+    "website": "https://www.rederijkooij.nl",
+    "boat_reality": "A century-old family firm with a six-boat fleet of glass-roof saloon cruisers departing the Rokin (opposite no. 125), running the one-hour 'Originele Rondvaart' and evening wine cruises.",
+    "brand_colors": ["#A6192E", "#0F2938", "#F8F5E9"],
+    "brand_vibe": "Traditional, deeply Amsterdam family rederij with a warm burgundy-and-cream identity and over a century of canal heritage.",
+    "scene": "A burgundy-hulled Rederij P. Kooij saloon boat cruises the Rokin past the Munttoren clock tower, its gilded clock face glowing against a warm evening sky.",
+    "art_tag": "burgundy heritage lithograph",
+    "prompt": "Painterly vintage travel-poster illustration, a classic burgundy-hulled glass-roof saloon boat gliding along the Rokin past the Munttoren clock tower at golden hour, the tower's gilded clock face glowing, old merchant houses and flower-market stalls at the quay, late sun streaking the canal, warm golden-hour light, terracotta teal cream palette, textured paper grain, no text, no words, no logos, no watermark"
+  }
+]
