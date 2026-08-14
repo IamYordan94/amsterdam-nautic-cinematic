@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VAART — Amsterdam boottickets</title>
   <meta name="description" content="Alle Amsterdamse rondvaarten, open boten, zelfvaar en diner cruises op één plek." />
 
@@ -11,15 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
-
-  <script type="importmap">
-    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
-  </script>
 </head>
 <body>
-
-  <!-- 3D scene mounts here -->
-  <div id="scene"></div>
 
   <!-- Top HUD -->
   <header class="hud">
@@ -30,11 +23,29 @@
     <button class="hud__list" id="listBtn">Alle aanbieders <span id="count">25</span></button>
   </header>
 
-  <!-- Bottom hint -->
-  <div class="hint" id="hint">
-    <span class="hint__dot"></span>
-    Beweeg je muis om te sturen · klik op een boot
-  </div>
+  <!-- Scroll-scrubbed hero -->
+  <section class="scrub" id="scrub">
+    <div class="scrub__pin">
+      <video id="heroVideo" class="scrub__video" src="video/canal-hero.mp4" muted playsinline preload="auto"></video>
+      <div class="scrub__shade"></div>
+      <div class="scrub__content">
+        <p class="scrub__eyebrow">Amsterdam · boottickets</p>
+        <h1 class="scrub__title">Vaar mee.</h1>
+        <p class="scrub__sub">Scroll om door de grachten te varen — alle 25 aanbieders op één plek.</p>
+        <div class="scrub__tags" id="tags"></div>
+      </div>
+      <div class="scrub__hint" id="hint"><span class="scrub__hint-dot"></span> Scroll om te varen</div>
+    </div>
+  </section>
+
+  <!-- Providers -->
+  <section class="providers" id="providers">
+    <div class="providers__head">
+      <p class="providers__eyebrow">Alle aanbieders</p>
+      <h2 class="providers__title">Kies je boot.</h2>
+    </div>
+    <div class="providers__grid" id="grid"></div>
+  </section>
 
   <!-- Provider detail card -->
   <aside class="card" id="card" aria-hidden="true">
@@ -55,6 +66,8 @@
     <div class="panel__list" id="panelList"></div>
   </nav>
 
-  <script type="module" src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
